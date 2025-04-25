@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dockerfile Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fa-brands fa-docker"></i> Dockerfile Editor</h2>
+                <button class="btn-icon" onclick="loadProjects()" title="Refresh projects">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="command-search">
+                <input type="text" id="command-filter" placeholder="Search commands...">
+            </div>
+            <div id="commands-list" class="command-list"></div>
+        </div>
+
+        <div class="main-content">
+            <div class="editor-header">
+                <div class="project-controls">
+                    <input type="text" id="project-name" placeholder="New project..." class="project-input">
+                    <button onclick="compileDockerfile()" class="btn-primary">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                </div>
+                <div class="command-input">
+                    <div class="command-preview" id="selected-command"></div>
+                    <input type="text" id="command-arg" 
+                           placeholder="Enter command arguments..."
+                           class="command-arg-input">
+                    <button onclick="addCommand()" class="btn-success">
+                        <i class="fas fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+            
+            <div id="editor-container" class="monaco-editor"></div>
+
+            <div class="projects-panel">
+                <h3><i class="fas fa-folder-open"></i> Projects</h3>
+                <select id="projects-list" class="project-select" 
+                        onchange="loadProject(this.value)">
+                    <option value="">Select a project...</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
