@@ -26,7 +26,7 @@ A web-based Dockerfile editor with project management capabilities and example t
 git clone https://github.com/FUZASHI/dockerfile-editor.git
 cd dockerfile-editor
 npm install
-node start
+npm start
 ```
 
 ## License
